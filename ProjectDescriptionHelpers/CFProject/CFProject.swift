@@ -36,7 +36,10 @@ public extension CFProject {
             organizationName: .cleanFoundry,
             options: .default,
             targets: targets,
-            additionalFiles: additionalFiles
+            additionalFiles: [
+                "**/*.md",
+                "**/__Snapshots__/**/*",
+            ] + additionalFiles
         )
     }
 
