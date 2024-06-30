@@ -49,6 +49,7 @@ public extension CFTarget {
 
     static func defaultApp(
         name: Name,
+        destinations: Set<Destination>,
         infoPlist: InfoPlist,
         internalDependencies: [CFTarget.Name],
         externalDependencies: [CFExternalTargetName],
@@ -58,7 +59,7 @@ public extension CFTarget {
     ) -> Self {
         Self.init(
             name: name,
-            destinations: [.iPad, .iPhone],
+            destinations: destinations,
             product: .app,
             bundleID: .default(targetName: name),
             deploymentTarget: deploymentTarget,
@@ -78,6 +79,7 @@ public extension CFTarget {
 
     static func defaultFramework(
         name: Name,
+        destinations: Set<Destination>,
         internalDependencies: [CFTarget.Name],
         externalDependencies: [CFExternalTargetName],
         deploymentTarget: DeploymentTarget,
@@ -85,7 +87,7 @@ public extension CFTarget {
     ) -> Self {
         Self.init(
             name: name,
-            destinations: [.iPad, .iPhone],
+            destinations: destinations,
             product: .framework,
             bundleID: .default(targetName: name),
             deploymentTarget: deploymentTarget,
