@@ -1,0 +1,26 @@
+name: Create Release from Commit Count
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Release tag with commit number
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Create release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          COMMIT_NUMBER=$(git rev-list main --count)
+          TAG="0.0.$COMMIT_NUMBER"
+          gh release create "$TAG"               --repo="$GITHUB_REPOSITORY"               --title="$TAG"               --notes="Release $TAG"
