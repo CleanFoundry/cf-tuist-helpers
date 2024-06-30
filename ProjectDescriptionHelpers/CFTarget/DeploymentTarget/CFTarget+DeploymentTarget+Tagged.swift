@@ -19,6 +19,6 @@ public extension CFTarget.DeploymentTarget.iOS {
 
 public extension CFTarget.DeploymentTarget.tvOS {
 
-    static let v17_5_1: Self = "17.5.1"
+    static let v17_4: Self = "17.4"
 
 }
