@@ -28,7 +28,7 @@ public extension CFTarget.DeploymentTarget {
     static func tvOSDefault() -> Self {
         .init(
             iOS: nil,
-            tvOS: .v17_5
+            tvOS: .v17_5_1
         )
     }
 
