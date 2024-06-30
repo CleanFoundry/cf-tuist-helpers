@@ -47,6 +47,94 @@ public struct CFTarget {
 
 public extension CFTarget {
 
+    static func defaultApp(
+        name: Name,
+        infoPlist: InfoPlist,
+        internalDependencies: [CFTarget.Name],
+        externalDependencies: [CFExternalTargetName],
+        deploymentTarget: DeploymentTarget,
+        settings: SettingsDictionary = [:],
+        launchArguments: [LaunchArgument] = []
+    ) -> Self {
+        Self.init(
+            name: name,
+            destinations: [.iPad, .iPhone],
+            product: .app,
+            bundleID: .default(targetName: name),
+            deploymentTarget: deploymentTarget,
+            infoPlist: infoPlist,
+            sourcePaths: [
+                .sources(targetName: name)
+            ],
+            resourcePaths: [
+                .resources(targetName: name)
+            ],
+            internalDependencies: internalDependencies,
+            externalDependencies: externalDependencies,
+            settings: settings,
+            launchArguments: launchArguments
+        )
+    }
+
+    static func defaultFramework(
+        name: Name,
+        internalDependencies: [CFTarget.Name],
+        externalDependencies: [CFExternalTargetName],
+        deploymentTarget: DeploymentTarget,
+        includeResources: Bool = false
+    ) -> Self {
+        Self.init(
+            name: name,
+            destinations: [.iPad, .iPhone],
+            product: .framework,
+            bundleID: .default(targetName: name),
+            deploymentTarget: deploymentTarget,
+            infoPlist: .default,
+            sourcePaths: [
+                .sources(targetName: name),
+            ],
+            resourcePaths: includeResources ? [
+                .resources(targetName: name)
+            ] : [],
+            internalDependencies: internalDependencies,
+            externalDependencies: externalDependencies,
+            settings: [:],
+            launchArguments: []
+        )
+    }
+
+    static func defaultFrameworkUnitTests(
+        testing target: CFTarget,
+        internalDependencies: [CFTarget.Name],
+        externalDependencies: [CFExternalTargetName],
+        deploymentTarget: DeploymentTarget
+    ) -> Self {
+        let name: CFTarget.Name = .testing(targetName: target.name)
+        return Self.init(
+            name: name,
+            destinations: target.destinations,
+            product: .frameworkUnitTests,
+            bundleID: .default(targetName: name),
+            deploymentTarget: deploymentTarget,
+            infoPlist: .default,
+            sourcePaths: [
+                .tests(testTargetName: name),
+            ],
+            resourcePaths: [],
+            internalDependencies: internalDependencies + [target.name],
+            externalDependencies: externalDependencies,
+            settings: [:],
+            launchArguments: [
+                .recordUISnapshots,
+            ]
+        )
+    }
+
+}
+
+
+public extension CFTarget {
+
     func toTuist() -> Target {
         Target.target(
             name: name.toTuist(),
