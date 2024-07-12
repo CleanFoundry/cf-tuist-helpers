@@ -2,7 +2,7 @@ import ProjectDescription
 
 public extension CFTarget {
 
-    enum Destination {
+    enum Destination: Sendable {
         case iPhone
         case iPad
         case tvOS

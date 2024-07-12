@@ -2,7 +2,7 @@ import ProjectDescription
 
 public extension CFTarget {
 
-    enum InfoPlist {
+    enum InfoPlist: Sendable {
 
         case `default`
         case extendingDefault([String: ProjectDescription.Plist.Value])

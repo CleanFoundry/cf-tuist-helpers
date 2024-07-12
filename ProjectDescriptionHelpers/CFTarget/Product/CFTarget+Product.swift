@@ -2,7 +2,7 @@ import ProjectDescription
 
 public extension CFTarget {
 
-    enum Product {
+    enum Product: Sendable {
         case app
         case framework
         case frameworkUnitTests

@@ -2,7 +2,7 @@ import ProjectDescription
 
 public extension CFTarget {
 
-    struct DeploymentTarget {
+    struct DeploymentTarget: Sendable {
 
         public let iOS: iOS?
         public let tvOS: tvOS?

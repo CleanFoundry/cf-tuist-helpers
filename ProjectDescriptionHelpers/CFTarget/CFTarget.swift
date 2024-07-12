@@ -1,6 +1,6 @@
 import ProjectDescription
 
-public struct CFTarget {
+public struct CFTarget: Sendable {
 
     public let name: Name
     public let destinations: Set<Destination>

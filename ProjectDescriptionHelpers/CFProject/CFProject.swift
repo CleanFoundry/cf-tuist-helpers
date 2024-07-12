@@ -1,6 +1,6 @@
 import ProjectDescription
 
-public struct CFProject {
+public struct CFProject: Sendable {
 
     public let name: Name
     public let organizationName: CFOrganizationName

@@ -1,6 +1,6 @@
 import ProjectDescription
 
-public struct CFWorkspace {
+public struct CFWorkspace: Sendable {
 
     public let name: Name
     public let projectPaths: [CFFilePath]
