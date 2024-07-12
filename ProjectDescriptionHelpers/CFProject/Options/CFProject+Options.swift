@@ -2,9 +2,9 @@ import ProjectDescription
 
 public extension CFProject {
 
-    struct Options {
+    struct Options: Sendable {
 
-        public struct SuffixGroups {
+        public struct SuffixGroups: Sendable {
 
             public let test: Set<String>
             public let run: Set<String>

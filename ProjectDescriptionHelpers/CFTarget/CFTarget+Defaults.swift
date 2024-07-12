@@ -2,7 +2,7 @@ import ProjectDescription
 
 public extension CFTarget {
 
-    struct Default {
+    struct Default: Sendable {
         fileprivate init() { }
     }
     static let `default` = Default()

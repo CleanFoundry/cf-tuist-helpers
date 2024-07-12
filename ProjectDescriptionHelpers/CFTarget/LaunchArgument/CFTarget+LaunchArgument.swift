@@ -2,7 +2,7 @@ import ProjectDescription
 
 public extension CFTarget {
 
-    struct LaunchArgument {
+    struct LaunchArgument: Sendable {
 
         public let name: Name
         public let isDefaultEnabled: IsDefaultEnabled
