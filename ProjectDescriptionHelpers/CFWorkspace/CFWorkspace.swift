@@ -19,7 +19,7 @@ public struct CFWorkspace: Sendable {
 }
 
 public extension CFWorkspace {
-    
+
     static func `default`(
         name: Name,
         xcodeVersion: Version
