@@ -1,5 +1,4 @@
-// Tuist Plugins don’t support bringing in third-party code.
-// This source is copied and trimmed down from the swift-tagged repo @ varion 0.10.0.
+// Copied and trimmed down from the swift-tagged repo @ 0.10.0.
 
 @dynamicMemberLookup
 public struct Tagged<Tag, RawValue> {
